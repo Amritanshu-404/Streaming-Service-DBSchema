@@ -19,11 +19,9 @@ The database is implemented using **Microsoft SQL Server (MSSQL)** with real-wor
 
 ### **ER Diagram**
 ![ER Diagram](https://github.com/Amritanshu-404/Streaming-Service-DBSchema/blob/main/ER.png)  
-*Figure 1 — Entity Relationship Diagram (replace with your actual image link).*
 
 ### **Relational Schema**
 ![Relational Schema](https://github.com/Amritanshu-404/Streaming-Service-DBSchema/blob/main/Schema.png)  
-*Figure 2 — Relational Schema showing tables, PKs and FKs (replace with your actual image link).*
 
 ---
 
