@@ -18,11 +18,11 @@ The database is implemented using **Microsoft SQL Server (MSSQL)** with real-wor
 > **Replace the URL placeholders with actual image URLs after uploading your diagrams.**
 
 ### **ER Diagram**
-![ER Diagram](https://drive.google.com/file/d/1ElHaY0UcliLSDC9sa4a2s7HgAArZttBc/view?usp=sharing)  
+![ER Diagram](https://github.com/Amritanshu-404/Streaming-Service-DBSchema/blob/main/ER.png)  
 *Figure 1 — Entity Relationship Diagram (replace with your actual image link).*
 
 ### **Relational Schema**
-![Relational Schema](https://drive.google.com/file/d/10nLWywYFN7D0E8pKlSyneyT_Snw6e7_T/view?usp=sharing)  
+![Relational Schema](https://github.com/Amritanshu-404/Streaming-Service-DBSchema/blob/main/Schema.png)  
 *Figure 2 — Relational Schema showing tables, PKs and FKs (replace with your actual image link).*
 
 ---
