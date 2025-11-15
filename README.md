@@ -180,12 +180,5 @@ This can be extended into API integration, backend systems, or advanced analytic
 - **Siddharth Kumar**  
 - **Ritesh Singh Kushwaha**  
 - **Amritanshu Kumar**
-
+  
 ---
-
-## 📌 Notes  
-- Replace the ER & Schema image URLs with your actual hosted images.  
-- Recommended hosting options: GitHub `/assets/`, GitHub raw links, or any public image CDN.
-
----
-
