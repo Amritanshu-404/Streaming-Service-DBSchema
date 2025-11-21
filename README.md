@@ -356,6 +356,6 @@ Have questions or suggestions?
 
 **If you find this project helpful, please consider giving it a ⭐!**
 
-Made with ❤️ for database enthusiasts and streaming platform developers
+Made with ❤️ for database enthusiasts.
 
 </div>
