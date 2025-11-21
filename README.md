@@ -1,184 +1,361 @@
-# 🎬 Streaming Service DB  
-This project presents a fully structured and normalized **relational database management system (RDBMS)** designed for a subscription-based online streaming platform.  
-It models  relational database systems, real OTT platforms like Netflix, Amazon Prime Video, Hotstar & Hulu. platform functionality such as:
+# 🎬 Streaming Service Database Management System
 
-- User accounts  
-- Subscription plans  
-- Payments  
-- Content metadata  
-- Device tracking  
-- Watch history  
-- Region-based content licensing  
+<div align="center">
+
+![SQL Server](https://img.shields.io/badge/SQL%20Server-MSSQL-CC2927?logo=microsoft-sql-server)
+![T-SQL](https://img.shields.io/badge/T--SQL-Optimized-blue)
+![Database](https://img.shields.io/badge/Database-Relational-green)
+![Normalization](https://img.shields.io/badge/Normalization-3NF-orange)
+
+**A fully structured and normalized relational database system for subscription-based streaming platforms**
+
+[Features](#-key-features) • [Architecture](#-architecture-diagrams) • [Entities](#-entities--relationships) • [SQL Components](#-sql-components-implemented) • [Tech Stack](#-technologies-used)
+
+</div>
+
+---
+
+## 📖 Overview
+
+This project presents a comprehensive **relational database management system (RDBMS)** designed for subscription-based online streaming platforms. It models real-world OTT platforms like **Netflix**, **Amazon Prime Video**, **Hotstar**, and **Hulu**.
+
+The system handles complete platform functionality including:
+
+- 👤 User account management
+- 💳 Subscription plans & billing
+- 💰 Payment processing
+- 🎥 Content metadata & cataloging
+- 📱 Multi-device tracking
+- 🕒 Watch history & analytics
+- 🌍 Region-based content licensing
 
 The database is implemented using **Microsoft SQL Server (MSSQL)** with real-world relational modeling and optimized SQL operations.
 
 ---
 
-## 📸 Architecture Diagrams  
-> **Replace the URL placeholders with actual image URLs after uploading your diagrams.**
+## 📸 Architecture Diagrams
 
-### **ER Diagram**
-![ER Diagram](https://github.com/Amritanshu-404/Streaming-Service-DBSchema/blob/main/ER.png)  
+### **Entity-Relationship (ER) Diagram**
+
+<div align="center">
+
+![ER Diagram](https://github.com/Amritanshu-404/Streaming-Service-DBSchema/blob/main/ER.png)
+
+</div>
 
 ### **Relational Schema**
-![Relational Schema](https://github.com/Amritanshu-404/Streaming-Service-DBSchema/blob/main/Schema.png)  
+
+<div align="center">
+
+![Relational Schema](https://github.com/Amritanshu-404/Streaming-Service-DBSchema/blob/main/Schema.png)
+
+</div>
 
 ---
 
-## 🚀 Key Features  
+## 🚀 Key Features
 
-### 🔐 **User Management**
-- Stores user information and account details  
-- Tracks registration timestamps & account status  
+### 🔐 User Management
+- Complete user information and account details storage
+- Registration timestamps tracking
+- Account status monitoring (active/inactive)
+- User authentication support
 
-### 💳 **Subscription Handling**
-- Multiple subscription plans (Basic, Standard, Premium, etc.)  
-- Start/end dates, renewal status, and subscription lifecycle tracking  
+### 💳 Subscription Handling
+- Multiple subscription tiers (Basic, Standard, Premium)
+- Subscription lifecycle tracking (start/end dates)
+- Renewal status monitoring
+- Plan upgrade/downgrade support
 
-### 🎥 **Content Catalog**
-- Stores detailed metadata for movies & series  
-- Title, genre, duration, release date, rating, age rating & description  
+### 🎥 Content Catalog
+- Comprehensive metadata for movies & series
+- Attributes: title, genre, duration, release date
+- Rating system integration
+- Age rating & content description
+- Multi-language support
 
-### 📱 **Device Registration**
-- Tracks all devices registered by a user  
-- Supports multi-device streaming rules  
+### 📱 Device Registration
+- Track all devices registered per user
+- Multi-device streaming rules enforcement
+- Device limit management
+- Device type identification (TV, Mobile, Tablet, etc.)
 
-### 🕒 **Watch History Tracking**
-- Logs content watched by users  
-- Tracks progress & completion for recommendations  
+### 🕒 Watch History Tracking
+- Complete viewing history logs
+- Progress tracking for resume functionality
+- Completion status for recommendations
+- Timestamp-based analytics
 
-### 💰 **Payment System**
-- Records user payment details  
-- Amount, payment method, timestamp & payment status  
+### 💰 Payment System
+- Detailed payment transaction records
+- Multiple payment method support
+- Amount, timestamp, and status tracking
+- Payment history for billing inquiries
 
-### 🌍 **Content Licensing**
-- Region-based access control for content  
-- License start & end dates stored for legal compliance  
+### 🌍 Content Licensing
+- Region-based access control
+- License validity tracking (start/end dates)
+- Geographic content restrictions
+- Legal compliance management
 
 ---
 
-## 📦 Project Contents  
-This project includes:
-
-- ✔ ER Diagram & Relational Schema (URL placeholders included)  
-- ✔ Entity descriptions & full attribute lists  
-- ✔ Normalized schema (1NF → 2NF → 3NF)  
-- ✔ SQL DDL scripts (CREATE TABLE statements)  
-- ✔ SQL DML scripts (INSERT sample data)  
-- ✔ User-defined functions (parameterized & non-parameterized)  
-- ✔ Stored procedures with TRY–CATCH blocks  
-- ✔ Cursor implementation  
-- ✔ Analytical SQL queries (reports, statistics, revenue, trends)  
-
----
-
-## 🧩 Entities & Relationships  
+## 🧩 Entities & Relationships
 
 ### **Core Entities**
-- Users  
-- Subscription Plans  
-- Subscriptions  
-- Contents  
-- Watch History  
-- Payments  
-- Devices  
-- Content Licensing  
+
+| Entity | Description |
+|--------|-------------|
+| **Users** | Stores user account information |
+| **Subscription Plans** | Defines available subscription tiers |
+| **Subscriptions** | Links users to their active plans |
+| **Contents** | Catalog of movies and series |
+| **Watch History** | Tracks user viewing activity |
+| **Payments** | Records financial transactions |
+| **Devices** | Manages registered streaming devices |
+| **Content Licensing** | Handles region-based content access |
 
 ### **Relationship Summary**
-- One user → many subscriptions  
-- One user → many watch history records  
-- One content item → many watch history entries  
-- One subscription → many devices  
-- One subscription plan → many users  
-- One content item → many content licenses  
-- One user → many payment records  
 
-These relationships ensure referential integrity and efficient data retrieval.
+```
+Users (1) ──────── (M) Subscriptions
+Users (1) ──────── (M) Watch History
+Users (1) ──────── (M) Payments
+Contents (1) ────── (M) Watch History
+Contents (1) ────── (M) Content Licensing
+Subscription Plans (1) ── (M) Subscriptions
+Subscriptions (1) ─────── (M) Devices
+```
+
+**Key Relationships:**
+- One user → many subscriptions
+- One user → many watch history records
+- One content item → many watch history entries
+- One subscription → many devices
+- One subscription plan → many users
+- One content item → many content licenses
+- One user → many payment records
+
+These relationships ensure **referential integrity** and **efficient data retrieval**.
 
 ---
 
-## 🔧 Technologies Used  
+## 📦 Project Contents
+
+This comprehensive project includes:
+
+- ✅ **ER Diagram** & Relational Schema with visual representations
+- ✅ **Entity Descriptions** with complete attribute lists
+- ✅ **Normalized Schema** (1NF → 2NF → 3NF)
+- ✅ **SQL DDL Scripts** (CREATE TABLE statements)
+- ✅ **SQL DML Scripts** (INSERT sample data)
+- ✅ **User-Defined Functions** (parameterized & non-parameterized)
+- ✅ **Stored Procedures** with TRY–CATCH error handling
+- ✅ **Cursor Implementation** for iterative processing
+- ✅ **Analytical SQL Queries** (reports, statistics, revenue analysis)
+
+---
+
+## 🔧 Technologies Used
+
 | Technology | Purpose |
 |-----------|---------|
-| **MSSQL (Microsoft SQL Server)** | Database engine |
-| **T-SQL (DDL & DML)** | Table creation, inserts, updates, relational queries |
-| **Stored Procedures** | Encapsulated server-side logic |
-| **Functions** | Reusable data-retrieval utilities |
-| **Cursors** | Iterative SQL processing |
-| **Normalization (1NF–3NF)** | Reduces redundancy, improves consistency |
-| **ER Modeling** | Database structure design |
+| **Microsoft SQL Server (MSSQL)** | Primary database engine |
+| **T-SQL (DDL & DML)** | Table creation, data manipulation, queries |
+| **Stored Procedures** | Encapsulated server-side business logic |
+| **User-Defined Functions** | Reusable data-retrieval utilities |
+| **Cursors** | Iterative SQL record processing |
+| **Normalization (1NF–3NF)** | Data redundancy reduction & consistency |
+| **ER Modeling** | Structured database design methodology |
 
 ---
 
-## 📊 SQL Components Implemented  
+## 📊 SQL Components Implemented
 
-### ✔ **Table Creation**
-Complete scripts for all main modules:
-- Users  
-- Subscription Plans  
-- Subscriptions  
-- Contents  
-- Watch History  
-- Devices  
-- Payments  
-- Content Licensing  
+### 🗂️ Table Creation (DDL)
 
-### ✔ **Sample Data Insertion**
-Includes realistic sample records for:
-- Users  
-- Plans  
-- Payments  
-- Content metadata  
-- Watch history  
-- Licensing  
-- Devices  
+Complete DDL scripts for all core modules:
 
-### ✔ **Functions**
-- Retrieve first names of all users  
-- Retrieve subscription plans within a cost range  
+- ✅ Users table with authentication fields
+- ✅ Subscription Plans with pricing tiers
+- ✅ Subscriptions linking users and plans
+- ✅ Contents with comprehensive metadata
+- ✅ Watch History with progress tracking
+- ✅ Devices with registration details
+- ✅ Payments with transaction records
+- ✅ Content Licensing with region mapping
 
-### ✔ **Stored Procedures**
-- Retrieve user details  
-- Filter content by language  
-- TRY–CATCH error-handled SP for joining user/watch history  
+### 📝 Sample Data Insertion (DML)
 
-### ✔ **Cursor**
-- Iterates over subscription plans and prints details  
+Realistic sample records for:
 
-### ✔ **Analytical Queries**
-- Active users by plan  
-- Total revenue generation  
-- Watch history insights  
-- Subscription renewal tracking  
-- Recently watched content (last 3 years)  
+- 👥 Multiple user profiles
+- 💳 Various subscription plans
+- 💰 Payment transactions
+- 🎬 Diverse content metadata
+- 🕒 Watch history logs
+- 🌍 Regional licensing data
+- 📱 Multiple device registrations
+
+### ⚙️ User-Defined Functions
+
+**Implemented Functions:**
+1. **Get All User First Names** – Retrieves list of all registered users
+2. **Filter Plans by Cost Range** – Returns subscription plans within price bounds
+
+### 🔄 Stored Procedures
+
+**Key Procedures:**
+1. **Retrieve User Details** – Fetches complete user information
+2. **Filter Content by Language** – Returns content matching language preference
+3. **User Watch History with Error Handling** – Joins user and watch history with TRY–CATCH blocks
+
+### 🔁 Cursor Implementation
+
+- Iterates over subscription plans
+- Prints detailed plan information
+- Demonstrates cursor-based processing
+
+### 📈 Analytical Queries
+
+**Business Intelligence Queries:**
+- 📊 Active users by subscription plan
+- 💵 Total revenue generation analysis
+- 🎥 Watch history insights and trends
+- 🔄 Subscription renewal tracking
+- 🕐 Recently watched content (last 3 years)
+- 📉 User engagement metrics
+- 🌍 Regional content performance
 
 ---
 
-## 🎯 Purpose  
+## 🎯 Purpose & Applications
+
 This system serves as a **realistic simulation** of how major streaming platforms manage:
 
-- Millions of users  
-- Thousands of content items  
-- Subscription billing  
-- Playback analytics  
-- Regional licensing  
-- Performance-optimized data handling  
+✨ **Scalability:**
+- Handles millions of users
+- Manages thousands of content items
+- Processes high-volume transactions
 
-It bridges academic database principles with actual industry implementations.
+💼 **Business Operations:**
+- Subscription billing automation
+- Playback analytics for recommendations
+- Regional licensing compliance
+- Revenue tracking and forecasting
+
+🔧 **Technical Excellence:**
+- Performance-optimized data handling
+- Referential integrity enforcement
+- Normalized data structure
+- Industry-standard practices
+
+**Bridges academic database principles with real industry implementations.**
 
 ---
 
-## 🧾 Conclusion  
-The project successfully demonstrates the creation of a **scalable**, **normalized**, and **functional** database for a modern streaming platform.  
-It integrates user management, plans, payments, device tracking, licensing and analytics into a cohesive RDBMS—all implemented in MSSQL using best practices.
+## 🛠️ Installation & Setup
 
-This can be extended into API integration, backend systems, or advanced analytics engines.
+### Prerequisites
+- Microsoft SQL Server 2016 or higher
+- SQL Server Management Studio (SSMS)
+
+### Quick Start
+
+1. **Clone the Repository**
+```bash
+git clone https://github.com/Amritanshu-404/Streaming-Service-DBSchema.git
+cd Streaming-Service-DBSchema
+```
+
+2. **Open SSMS**
+- Connect to your SQL Server instance
+
+3. **Execute DDL Scripts**
+- Run table creation scripts in order
+
+4. **Insert Sample Data**
+- Execute DML scripts to populate tables
+
+5. **Test Functions & Procedures**
+- Run provided test queries
 
 ---
 
-## 👥 Authors  
-- **Siddharth Kumar**  
-- **Ritesh Singh Kushwaha**  
-- **Amritanshu Kumar**
-  
+## 🔮 Future Enhancements
+
+Potential extensions for this project:
+
+- [ ] 🔌 **REST API Integration** – Connect database to web services
+- [ ] 📊 **Advanced Analytics Dashboard** – Real-time reporting
+- [ ] 🤖 **Machine Learning Integration** – Content recommendations
+- [ ] 🔔 **Notification System** – Payment reminders, new content alerts
+- [ ] 📱 **Mobile App Backend** – Native app support
+- [ ] 🌐 **Multi-region Deployment** – Distributed database architecture
+- [ ] 🔐 **Enhanced Security** – Encryption, role-based access control
+
 ---
+
+## 🧾 Conclusion
+
+This project successfully demonstrates the creation of a **scalable**, **normalized**, and **functional** database system for modern streaming platforms.
+
+**Key Achievements:**
+- ✅ Comprehensive data modeling
+- ✅ Optimized SQL operations
+- ✅ Real-world business logic implementation
+- ✅ Industry-standard best practices
+- ✅ Extensible architecture
+
+The system integrates user management, subscription plans, payment processing, device tracking, content licensing, and analytics into a cohesive RDBMS—all implemented using MSSQL best practices.
+
+**Ready for extension into:**
+- API integration layers
+- Backend application systems
+- Advanced analytics engines
+- Production-grade deployments
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👥 Authors
+
+<div align="center">
+
+**Developed by:**
+
+**Siddharth Kumar**  
+GitHub: [@siddharthkumar](https://github.com/your-username)
+
+**Ritesh Singh Kushwaha**  
+GitHub: [@riteshkushwaha](https://github.com/your-username)
+
+**Amritanshu Kumar**  
+GitHub: [@Amritanshu-404](https://github.com/Amritanshu-404)
+
+</div>
+
+---
+
+## 📞 Contact & Support
+
+Have questions or suggestions?
+
+- 🐛 [Report Issues](https://github.com/Amritanshu-404/Streaming-Service-DBSchema/issues)
+- 💡 [Request Features](https://github.com/Amritanshu-404/Streaming-Service-DBSchema/issues/new)
+- ⭐ [Star this Repository](https://github.com/Amritanshu-404/Streaming-Service-DBSchema)
+
+---
+
+<div align="center">
+
+**If you find this project helpful, please consider giving it a ⭐!**
+
+Made with ❤️ for database enthusiasts and streaming platform developers
+
+</div>
